@@ -1,9 +1,15 @@
 package com.qa.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.base.TestBase;
 
@@ -43,8 +49,9 @@ public class Dealership extends TestBase{
 	WebElement DepZipcd;
 	
 	@FindBy(xpath = "//*[@id='app']/div/div/div/div[2]/form/div/div[4]/div[1]/div/div/div/div[1]/div[1]")
-	WebElement DepFranchise;
-	
+	List <WebElement> DepFranchise;
+//	WebElement DepFranchise;
+
 	@FindBy(xpath  = "//*[@id='app']/div/div/div/div[2]/form/div/div[4]/div[2]/div/div/div/div[1]")
 	WebElement DepDMS;
 	
@@ -131,9 +138,14 @@ public class Dealership extends TestBase{
 		DepZipcd.sendKeys(DZC);
 	}
 	
-	public void SelectFranchise(){
-	Select Fran =new Select(DepFranchise);
-	Fran.selectByVisibleText(" 'Buick','BMW' ");
+	public void DepFranchiseDropdown(String DD) {
+    	new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='app']/div/div/div/div[2]/form/div/div[4]/div[1]/div/div/div/div[1]/div[1]"))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id='app']/div/div/div/div[2]/form/div/div[4]/div[1]/div/div/div/div[1]/div[1")));
+		for (WebElement DepFranchiseDropdown : DepFranchise)
+		    if(DepFranchiseDropdown.getText().contains("BMW"))
+		    	DepFranchiseDropdown.click();
+//		DepFranchise.click();
+//		DepFranchise.sendKeys(DD);
 	}
 	
 	public void SelectDMS(){
@@ -180,5 +192,10 @@ public class Dealership extends TestBase{
 	public void ClickCreateBtn(){
 		CreateBtn.click();
 	}
+	
+//	_________________________________________________________________________________________________________________________
+
+	
+	
 	
 }

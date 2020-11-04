@@ -266,7 +266,6 @@ public class User extends TestBase {
 	
 	public void ClickDeleteBtn(){
 	DeleteBtn.click();
-	
 	}
 	
 	public void ClickCancelBtn(){

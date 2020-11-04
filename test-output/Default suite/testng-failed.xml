@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.qa.Testcases.UserTestCase">
+      <class name="com.qa.Testcases.DealershipTestcase">
         <methods>
-          <include name="tearDown"/>
-          <include name="DeleteUser"/>
+          <include name="AddNewDealership"/>
           <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.qa.Testcases.UserTestCase -->
+      </class> <!-- com.qa.Testcases.DealershipTestcase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
