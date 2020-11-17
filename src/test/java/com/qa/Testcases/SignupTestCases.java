@@ -1,9 +1,12 @@
 package com.qa.Testcases;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
+import org.testng.AssertJUnit;
+
+
 
 import com.qa.base.TestBase;
 
@@ -25,33 +28,35 @@ public class SignupTestCases<expected_error> extends TestBase {
 	}
 
 	@Test(priority=1)
-	public void verfiyTheCompanyLogo() throws Exception{
+	public void verfiyTheCompanyLogoAndAlertMessage() throws Exception{
 		signupPage.ClicktheSignupLink();
 		Thread.sleep(1000);
 		String logo = driver.getTitle(); 
 		System.out.println("CompanyLogo :" +logo );
-		Assert.assertEquals( logo, logo);
+		AssertJUnit.assertEquals( logo, logo);
+		
 			}
 
 	
 	@Test(priority=2)
 	public void VerfiySignupForm() throws Exception{
 		signupPage.ClicktheSignupLink();
-		signupPage.EnterfirstName("test");
-		signupPage.EnterLastName("zzz");
-		signupPage.EnterEmail("tasleemarshad79@gmail.com");
+		signupPage.EnterfirstName("blacktop");
+		signupPage.EnterLastName("user");
+		signupPage.EnterEmail("blacktopuser@gmail.com");
 		signupPage.EnterPassword("tesT@1234");
 		Thread.sleep(1000);
 		signupPage.EnterConfirmPassword("tesT@1234");
 		Thread.sleep(1000);
         signupPage.ClickSignupBtn();
+        Thread.sleep(2000);
         
-//   Verify the Validation in Email
-   String actual_error =signupPage.VerifyEmailValidation();
+//     Verify the Validation in Email
+      String actual_error =signupPage.VerifyEmailValidation();
 		String expected_error = "Please enter a valid email address";
 		Assert.assertEquals(actual_error, expected_error);
 		System.out.println(actual_error);
-        
+     
 	//   Verify the Password validation
 		String actual_errorPV =	signupPage.VerifyConfirmPasswordValidation();
 		String expected_errorPV ="Password should contain at least 8 characters";
@@ -64,7 +69,7 @@ public class SignupTestCases<expected_error> extends TestBase {
 		Assert.assertEquals(actual_errorCPV,expected_errorCPV);
 		System.out.println(actual_errorCPV);
 		
-		//   Verify the EmailAlreadtExistValidation
+	//   Verify the EmailAlreadtExistValidation
 		String actual_errorEEV=	signupPage.VerifyEmailAlreadyExist();
 		String expected_errorEEV="User already exist";
 		Assert.assertEquals(actual_errorEEV,expected_errorEEV);
@@ -73,6 +78,7 @@ public class SignupTestCases<expected_error> extends TestBase {
 	}
 	
 		
+
 		@AfterMethod
 	    public void tearDown(){
 			driver.quit();

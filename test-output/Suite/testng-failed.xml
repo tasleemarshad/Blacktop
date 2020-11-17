@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.qa.Testcases.UserTestCase">
+        <methods>
+          <include name="UserEditUser"/>
+          <include name="AddNewUser"/>
+          <include name="tearDown"/>
+          <include name="DeleteUser"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.Testcases.UserTestCase -->
+      <class name="com.qa.Testcases.DealershipTestcase">
+        <methods>
+          <include name="AddNewDealership"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.Testcases.DealershipTestcase -->
+      <class name="com.qa.Testcases.SignupTestCases">
+        <methods>
+          <include name="setUp"/>
+          <include name="VerfiySignupForm"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.qa.Testcases.SignupTestCases -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

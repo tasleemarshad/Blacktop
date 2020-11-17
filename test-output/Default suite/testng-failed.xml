@@ -8,6 +8,7 @@
           <include name="AddNewDealership"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="EditDealership"/>
         </methods>
       </class> <!-- com.qa.Testcases.DealershipTestcase -->
     </classes>

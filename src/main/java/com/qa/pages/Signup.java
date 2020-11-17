@@ -32,7 +32,7 @@ public class Signup extends TestBase{
 	@FindBy(name="confirmPassword")
 	WebElement ConfirmPassword;
 
-	@FindBy(xpath ="//*[@id='app']/div/div/div/div[2]/form/div[4]/button")
+	@FindBy(id ="btn-create-account")
 	WebElement SignupClick;
 	
 //	-----------------------------------------------------------------------------------------------
@@ -88,8 +88,9 @@ public class Signup extends TestBase{
 		ConfirmPassword.sendKeys(cnfmpswrd);
 	}
 	
-	public void ClickSignupBtn(){
+	public Login ClickSignupBtn(){
 		SignupClick.click();
+		return new Login();
 	}
 
 //	--------------------------------------------------------------------------------------------------
@@ -111,3 +112,4 @@ public class Signup extends TestBase{
 		}
 	
 }
+;

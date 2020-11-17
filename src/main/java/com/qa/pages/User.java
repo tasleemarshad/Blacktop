@@ -1,9 +1,14 @@
 package com.qa.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.base.TestBase;
 
@@ -40,13 +45,13 @@ public class User extends TestBase {
 	WebElement UsrStatus;
 	
 	@FindBy(xpath = "/html/body/div/div/div/div/div[2]/form/div/div[4]/div[3]/div/div/div/div/div[1]/div[1]")
-	WebElement UsrDealership;
+	List <WebElement> usrDealership;
 	
 	@FindBy(name = "phoneNumber")
 	WebElement UsrPhoneNum;
 
-	@FindBy(xpath = "//*[@id='app']/div/div/div/div[2]/form/div/div[5]/div[3]/div/div/div/div/div[1]/div[1]")
-	WebElement UsrDepartment;
+//	@FindBy(xpath = "//*[@id='app']/div/div/div/div[2]/form/div/div[5]/div[3]/div/div/div/div/div[1]/div[1]")
+//	List <WebElement>  UsrDepartment;
 	
 	@FindBy(name = "extension")
 	WebElement UsrExtension;
@@ -55,15 +60,15 @@ public class User extends TestBase {
 	WebElement createBtn;
 //	------------------------------------------------------------------------------------------
 //	 Alerts error 
-	
-	@FindBy(id = "create-user-password-error")
-	WebElement EmailaAlert;
 
-	@FindBy(id = "create-user-password-error")
+	@FindBy(xpath = "//*[@id='create-user-password-error']")
 	 WebElement PasswordAlert;
 	
 	@FindBy(id = "create-user-confirmPassword-error")
 	WebElement ConfirmPasswordAlert;
+	
+	@FindBy(xpath = "//*[@id='create-user-emailAddress-error']")
+	WebElement EmailaAlert;
 	
 	@FindBy(id = "create-user-phoneNumber-error")
 	WebElement PhoneNumAlert;
@@ -72,12 +77,10 @@ public class User extends TestBase {
 	
 //	EDIT USER 
 	//*[@id="app"]/div/div[2]/div/div[1]/div[2]/table/tbody/tr[19]/td[10]/div/a[2]/i
-	@FindBy(xpath = "//*[@id='app']/div/div[2]/div/div[1]/div[2]/table/tbody/tr[20]/td[10]/div/a[1]")
+	@FindBy(id= "action-btn-user-edit-9")
 	WebElement EditIcon;
-	//*[@id='app']/div/div[2]/div/div[1]/div[2]/table/tbody/tr[20]/td[10]/div/a[1]
-	//*[@id="app"]/div/div[2]/div/div[1]/div[2]/table/tbody/tr[19]/td[10]/div/a[1]
 	
-	
+
 	@FindBy(name = "firstName")
 	WebElement EditFrName;
 	
@@ -109,10 +112,9 @@ public class User extends TestBase {
 	
 //	DELETE USER 
 	//*[@id="app"]/div/div[2]/div/div[1]/div[2]/table/tbody/tr[21]/td[10]/div/a[2]
-	@FindBy(xpath  = "//*[@id='app']/div/div[2]/div/div[1]/div[2]/table/tbody/tr[4]/td[10]/div/a[2]")
+	@FindBy(id = "action-btn-user-delete-9")
 	WebElement Deleteicon;
-	
-	
+
 	@FindBy(xpath = "/html/body/div[1]/div/div[2]/div/div[2]/div/div/form/div[2]/button[2]")
 	WebElement DeleteBtn;
 	
@@ -169,10 +171,13 @@ public class User extends TestBase {
 		Rolee.selectByVisibleText("Active");
 	}
 	
-//	public void SelectDealership(String Deal){
-//		Select Rolee =new Select(UsrDealership);
-//		Rolee.selectByValue("Martin Chevrolet Buick GMC");
-//	}
+	public void dealership_dropdown(){
+	new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div/div/div[2]/form/div/div[4]/div[3]/div/div/div/div/div[1]/div[1]"))).click();
+	new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("/html/body/div/div/div/div/div[2]/form/div/div[4]/div[3]/div/div/div/div/div[1]/div[1]")));
+		for (WebElement dealership_dropdown : usrDealership)
+		    if(dealership_dropdown.getText().contains("Martin Chevrolet Buick GMC"))
+		    	dealership_dropdown.click();
+	}
 	
 	public void EnterPhone(String PN){
 		UsrPhoneNum.sendKeys(PN);
@@ -182,10 +187,13 @@ public class User extends TestBase {
 		UsrExtension.sendKeys(Ex);
 	}
 	
-//	public void SelectDepartment(){
-//		Select Department =new Select(UsrDepartment);
-//		Department.selectByValue("Martin Chevrolet Buick GMC");
-//	}
+	public void dep_Dropdown(){                                                            
+	new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='app']/div/div/div/div[2]/form/div/div[5]/div[3]/div/div/div/div/div[1]/div[1]"))).click();
+	List <WebElement>  UsrDepartment = new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id='app']/div/div/div/div[2]/form/div/div[5]/div[3]/div/div/div/div")));
+	for (WebElement dep_Dropdown : UsrDepartment)
+	    if(dep_Dropdown.getText().contains("Service"))
+	    	dep_Dropdown.click();
+}
 	
 	public void ClickCreateBtn(){
 	createBtn.submit();
