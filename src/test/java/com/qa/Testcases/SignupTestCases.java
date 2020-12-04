@@ -4,12 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.Assert;
-import org.testng.AssertJUnit;
-
-
-
 import com.qa.base.TestBase;
-
 import com.qa.pages.Signup;
 
 public class SignupTestCases<expected_error> extends TestBase {
@@ -21,6 +16,7 @@ public class SignupTestCases<expected_error> extends TestBase {
 		super();
 	}
 	 
+	
 	@BeforeMethod
 	public void setUp(){
 		initialization();
@@ -33,9 +29,8 @@ public class SignupTestCases<expected_error> extends TestBase {
 		Thread.sleep(1000);
 		String logo = driver.getTitle(); 
 		System.out.println("CompanyLogo :" +logo );
-		AssertJUnit.assertEquals( logo, logo);
-		
-			}
+		Assert.assertEquals( logo, logo);
+			} 
 
 	
 	@Test(priority=2)
@@ -73,8 +68,7 @@ public class SignupTestCases<expected_error> extends TestBase {
 		String actual_errorEEV=	signupPage.VerifyEmailAlreadyExist();
 		String expected_errorEEV="User already exist";
 		Assert.assertEquals(actual_errorEEV,expected_errorEEV);
-		System.out.println(actual_errorEEV);
-               
+		System.out.println(actual_errorEEV);         
 	}
 	
 		

@@ -38,7 +38,7 @@ public class Signup extends TestBase{
 //	-----------------------------------------------------------------------------------------------
 
 	//	 ALERTS VALIDATION 
-	
+	//*[@id="app"]/div/div/div/div[2]/form/div[2]/div/div/span
 	@FindBy(xpath="//*[@id='app']/div/div/div/div[2]/form/div[2]/div/div/span")
 	WebElement EmailValidation;
 	
@@ -47,8 +47,8 @@ public class Signup extends TestBase{
 	
 	@FindBy(xpath="//*[@id='app']/div/div/div/div[2]/form/div[3]/div[2]/div/span")
 	WebElement ConfirmPasswordValidation;
-	
-	@FindBy(xpath="//*[@id='app']/div/div/div/div[2]/form/div[2]/div/div/span")
+	//*[@id="app"]/div/div/div/div[2]/form/div[2]/div/div/div
+	@FindBy(xpath="//*[@id='app']/div/div/div/div[2]/form/div[2]/div/div/div")
 	WebElement EmailExistValidation;
 	
 

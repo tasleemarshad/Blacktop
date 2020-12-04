@@ -41,7 +41,7 @@ public class UserTestCase extends TestBase {
 		userPage.EnterLastName("last");
 		userPage.EnterPassword("Abcd1234@");
 		userPage.EnterConfirmPassword("Abcd1234@");
-		userPage.EnterEmail("tasleemarshad79@gmail.com");
+		userPage.EnterEmail("abcd@gmail.com");
 		userPage.SelectRole();
 		userPage.SelectStatus();
 	    userPage.dealership_dropdown();
