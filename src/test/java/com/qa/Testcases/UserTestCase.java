@@ -1,5 +1,7 @@
 package com.qa.Testcases;
 
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -28,8 +30,22 @@ public class UserTestCase extends TestBase {
 		userPage = new User();
 	}
 	
-
 	@Test(priority=1)
+	public void EmptyfieldValidation() throws Exception{
+		dshBrd = lginPge.login(prop.getProperty("EmailAddress"), prop.getProperty("passwordBtn"));
+		Thread.sleep(1000);
+		userPage.ClickonSetting();
+		userPage.SelectUserMenu();
+		userPage.ClickonNewUserBtn();
+		userPage.ClickCreateBtn();
+		List<String> ErrorsList = userPage.ValidateEmptyFields();
+		for (String str:ErrorsList)
+			System.out.println(str);
+		Assert.assertEquals(true,ErrorsList.isEmpty(), "Above Errors did not displayed on User Pages");
+	}
+	
+
+	@Test(priority=2)
 	public void AddNewUser() throws Exception{
 		dshBrd = lginPge.login(prop.getProperty("EmailAddress"), prop.getProperty("passwordBtn"));
 		Thread.sleep(1000);
@@ -50,7 +66,7 @@ public class UserTestCase extends TestBase {
 		userPage.dep_Dropdown();
 		userPage.ClickCreateBtn();
 		Thread.sleep(2000);
-		
+	
 //	  Verify the validation in Password is lessthen 8 character 
 //		WebDriverWait wait = new WebDriverWait(driver, 10);// 1 minute 
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("create-user-password-error")));
@@ -80,7 +96,7 @@ public class UserTestCase extends TestBase {
 		System.out.println(actual_errorPN);	
 		}
 	
-	@Test(priority=2)
+	@Test(priority=3)
 	public void UserEditUser() throws Exception{
 		dshBrd = lginPge.login(prop.getProperty("EmailAddress"), prop.getProperty("passwordBtn"));
 		Thread.sleep(1000);
@@ -100,7 +116,7 @@ public class UserTestCase extends TestBase {
 		Thread.sleep(2000);
 	}
 	
-	@Test(priority=3)
+	@Test(priority=4)
 	public void DeleteUser() throws Exception{
 		dshBrd = lginPge.login(prop.getProperty("EmailAddress"), prop.getProperty("passwordBtn"));
 		Thread.sleep(1000);

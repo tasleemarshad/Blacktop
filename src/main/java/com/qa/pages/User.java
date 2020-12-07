@@ -1,5 +1,6 @@
 package com.qa.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -280,11 +281,151 @@ public class User extends TestBase {
 		DeleteCancelBtn.click();
 	}
 	
+//	___________________________________________________________________________________________
 	
+	@FindBy(id = "create-user-firstName-error")
+	WebElement firstalert;
 	
+	@FindBy(id = "create-user-lastName-error")
+	WebElement lastalert;
 	
+	@FindBy(id = "create-user-password-error")
+	WebElement paswordalert;
 	
+	@FindBy(id = "create-user-confirmPassword-error")
+	WebElement confirmpaswordalert;
+	
+	@FindBy(id = "create-user-emailAddress-error")
+	WebElement emailalert;
+	
+	@FindBy(id = "create-user-role-error")
+	WebElement rolealert;
+	
+	@FindBy(id = "create-user-status-error")
+	WebElement statusalert;
+	
+	@FindBy(id = "create-user-dealershipId-error")
+	WebElement dealershipalert;
+	
+	@FindBy(id = "create-user-phoneNumber-error")
+	WebElement phonealert;
+	
+     public List<String> ValidateEmptyFields()
+{
+    	 createBtn.click();
+
+	List<String> issuesList = new ArrayList<String>();
+
+	int timeInSeconds = 5 * 1000;
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(firstalert, "Firs is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("First Name Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(lastalert, "Last name is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Last Name Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(paswordalert, "Password is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("passworad Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(confirmpaswordalert, "Confirm password is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Confirmpassworad Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(emailalert, "Email address is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Emailaddress Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(rolealert, "Role is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Role Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(rolealert, "Status is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Status Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(dealershipalert, "Select a dealership"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Dealership Error is not displayed");
+		System.out.println(e.getMessage());
+	}
+	try {
+		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
+		wait.until(ExpectedConditions.textToBePresentInElement(phonealert, "Phone number is required"));
+	}
+	catch (Exception e)
+	{
+		issuesList.add("Phone Error is not displayed");
+		System.out.println(e.getMessage());
 	}
 	
+	return issuesList;
 	
-
+}
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+}

@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.Testcases.ActionPlanTestCases">
+      <class name="com.qa.Testcases.SignupTestcases">
         <methods>
-          <include name="AddNewActionPlan"/>
           <include name="setUp"/>
+          <include name="VerfiySignupForm"/>
+          <include name="Test_ValidateAllErrorsSignupForm"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.qa.Testcases.ActionPlanTestCases -->
+      </class> <!-- com.qa.Testcases.SignupTestcases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
